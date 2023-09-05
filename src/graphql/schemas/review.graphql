@@ -1,0 +1,23 @@
+type Review {
+    id: ID!
+    title: String!
+    content: String!
+    
+    post: Post!
+    user: User!
+
+    createdAt: Date!
+    updatedAt: Date!
+}
+
+input CreateReviewInput {
+    title: String!
+    content: String!
+    postId: ID!
+    userId: ID!    
+}
+
+input UpdateReviewInput {
+    title: String
+    content: String
+}

@@ -1,0 +1,22 @@
+type Post implements Dates {
+    id: ID!
+    title: String!
+    content: String!
+    
+    author: User!
+    reviews: [Review!]
+
+    createdAt: Date!
+    updatedAt: Date!
+}
+
+input CreatePostInput {
+    title: String!
+    content: String!
+    authorId: ID!
+}
+
+input UpdatePostInput {
+    title: String
+    content: String
+}

@@ -1,0 +1,24 @@
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    
+    posts: [Post!]
+    reviews: [Review!]
+
+    createdAt: Date!
+    updatedAt: Date!
+}
+
+input CreateUserInput {
+    name: String!
+    email: String!
+    password: String!
+    role: String
+}
+
+input UpdateUserInput {
+    name: String
+    email: String
+    password: String
+}

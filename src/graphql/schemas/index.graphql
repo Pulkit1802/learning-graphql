@@ -1,0 +1,30 @@
+type DeletedItem {
+    status: String!
+    deleted: Boolean!
+}
+
+type Query {
+    posts: [Post!]
+    post(id: ID!): Post
+
+    users: [User!]
+    user(id: ID!): User
+
+    reviews: [Review!]
+    review(id: ID!): Review
+}
+
+type Mutation {
+
+    createUser(user: CreateUserInput): User!
+    updateUser(user: UpdateUserInput): User!
+    deleteUser(id: ID!): DeletedItem!
+
+    createPost(post: CreatePostInput): Post!
+    updatePost(post: UpdatePostInput): Post!
+    deletePost(id: ID!): DeletedItem!
+
+    createReview(review: CreateReviewInput): Review!
+    updateReview(review: UpdateReviewInput): Review!
+    deleteReview(id: ID!): DeletedItem!
+}

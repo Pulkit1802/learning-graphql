@@ -13,8 +13,8 @@ try {
     process.exit(1);
 }
 
-export const configs = {
-    PORT: process.env.PORT || 5000,
+export default {
+    PORT: process.env.PORT || 8080,
     NODE_ENV: process.env.NODE_ENV || "dev",
     prisma
 }
