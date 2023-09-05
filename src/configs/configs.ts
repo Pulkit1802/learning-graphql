@@ -7,6 +7,7 @@ let prisma: PrismaClient;
 
 try {
     prisma = new PrismaClient();
+    console.log("Prisma connected");
 } catch (error) {
     process.exit(1);
 }

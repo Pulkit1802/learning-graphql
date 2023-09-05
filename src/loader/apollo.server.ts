@@ -2,7 +2,7 @@ import { ApolloServer } from "@apollo/server";
 import {ApolloServerPluginDrainHttpServer} from "@apollo/server/plugin/drainHttpServer";
 import { Server } from "http";
 import configs from "../configs/configs";
-import typeDefs from "../graphql/typedef";
+import typeDefs from "../graphql";
 import { BaseContext } from "@apollo/server";
 import logger from "../utils/logger";
 
