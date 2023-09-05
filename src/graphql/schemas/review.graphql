@@ -6,8 +6,6 @@ type Review {
     post: Post!
     user: User!
 
-    createdAt: Date!
-    updatedAt: Date!
 }
 
 input CreateReviewInput {

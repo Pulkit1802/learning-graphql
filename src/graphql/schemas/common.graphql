@@ -1,4 +1,0 @@
-interface Dates {
-    createdAt: Date!
-    updatedAt: Date!
-}

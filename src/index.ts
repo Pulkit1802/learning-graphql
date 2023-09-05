@@ -1,55 +1,39 @@
-import express, { Application } from "express";
-import { ApolloServer } from "@apollo/server";
-import { expressMiddleware } from "@apollo/server/express4"
-import {ApolloServerPluginDrainHttpServer} from "@apollo/server/plugin/drainHttpServer";
-import helmet from "helmet";
-import morgan from "morgan";
-import cors from "cors";
-import http from "http";
 import configs from "./configs/configs";
+import { Server } from "http";
+import express, {Application} from "express";
+import loader from "./loader";
+import logger from "./utils/logger";
+
+process.on("uncaughtException", (error) => {
+    logger.error("Uncaught Exception: \n", error);
+    process.exit(1);
+});
+
+const port = configs.PORT;
 
 const app: Application = express();
 
-const typeDefs = `#graphql
-    type Query {
-        hello: String!
+let server: Server;
+loader({ app }).then((app) => {
+    server = app.listen(4000, () => {
+        logger.info(`Server is running on port ${port}`);
     }
-`;
+)});
 
-const resolvers = {
-    Query: {
-        hello: () => "Hello World"
-    },
-}
-
-const corsOptions = {
-    origin: "http://localhost:3000",
-}
-
-app.use(morgan("dev"));
-app.use(cors(corsOptions));
-app.use(helmet());
-app.use(express.json({limit: "100kb"}));
-
-
-const httpServer = http.createServer(app);
-
-const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    introspection: true,
-    plugins: [ApolloServerPluginDrainHttpServer({httpServer})]
-})
-
-const startServer = async () => {
-    await server.start();
-    app.use('/graphql', expressMiddleware(server));
-
-    const port = configs.PORT;
-
-    httpServer.listen(port, () => {
-        console.log(`Server is running on port ${port}`);
+process.on("SIGINT", () => {
+    logger.info("SIGINT signal received");
+    logger.info("Closing server");
+    server.close(() => {
+        logger.info("Server closed");
+        process.exit(0);
     });
-}
+});
 
-startServer();
+process.on("SIGTERM", () => {
+    logger.info("SIGTERM signal received");
+    logger.info("Closing server");
+    server.close(() => {
+        logger.info("Server closed");
+        process.exit(0);
+    });
+});

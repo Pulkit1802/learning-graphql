@@ -6,8 +6,6 @@ type User {
     posts: [Post!]
     reviews: [Review!]
 
-    createdAt: Date!
-    updatedAt: Date!
 }
 
 input CreateUserInput {
