@@ -1,8 +1,8 @@
 Arguments: 
-  /home/cyrus/.nvm/versions/node/v18.16.0/bin/node /home/cyrus/.nvm/versions/node/v18.16.0/bin/yarn add @apollo/server/express4
+  /home/cyrus/.nvm/versions/node/v18.16.0/bin/node /home/cyrus/.nvm/versions/node/v18.16.0/bin/yarn add @appolo/sandbox
 
 PATH: 
-  /home/cyrus/.nvm/versions/node/v18.16.0/bin:/home/cyrus/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/cyrus/.npm-packages/bin:/home/cyrus/.npm-packages/bin
+  /home/cyrus/.nvm/versions/node/v18.16.0/bin:/home/cyrus/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/cyrus/.npm-packages/bin
 
 Yarn version: 
   1.22.19
@@ -14,8 +14,8 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@apollo%2fserver/express4: Request "https://registry.yarnpkg.com/@apollo%2fserver/express4" returned a 405
-      at params.callback [as _callback] (/home/cyrus/.nvm/versions/node/v18.16.0/lib/node_modules/yarn/lib/cli.js:66154:18)
+  Error: https://registry.yarnpkg.com/@appolo%2fsandbox: Not found
+      at params.callback [as _callback] (/home/cyrus/.nvm/versions/node/v18.16.0/lib/node_modules/yarn/lib/cli.js:66145:18)
       at self.callback (/home/cyrus/.nvm/versions/node/v18.16.0/lib/node_modules/yarn/lib/cli.js:140890:22)
       at Request.emit (node:events:513:28)
       at Request.<anonymous> (/home/cyrus/.nvm/versions/node/v18.16.0/lib/node_modules/yarn/lib/cli.js:141862:10)
@@ -30,6 +30,9 @@ npm manifest:
   {
     "dependencies": {
       "@apollo/server": "^4.9.3",
+      "@graphql-tools/schema": "^10.0.0",
+      "@prisma/client": "^5.2.0",
+      "body-parser": "^1.20.2",
       "cors": "^2.8.5",
       "dotenv": "^16.3.1",
       "express": "^4.18.2",
@@ -40,6 +43,7 @@ npm manifest:
       "winston": "^3.10.0"
     },
     "devDependencies": {
+      "@types/cors": "^2.8.14",
       "@types/dotenv": "^8.2.0",
       "@types/express": "^4.17.17",
       "@types/morgan": "^1.9.5",
@@ -56,7 +60,7 @@ npm manifest:
       "typescript": "^5.2.2"
     },
     "scripts": {
-      "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+      "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
       "build": "tsc",
       "start": "node ./dist/index.js"
     }
@@ -283,6 +287,24 @@ Lockfile:
       "@graphql-tools/utils" "^9.2.1"
       tslib "^2.4.0"
   
+  "@graphql-tools/merge@^9.0.0":
+    version "9.0.0"
+    resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-9.0.0.tgz#b0a3636c82716454bff88e9bb40108b0471db281"
+    integrity sha512-J7/xqjkGTTwOJmaJQJ2C+VDBDOWJL3lKrHJN4yMaRLAJH3PosB7GiPRaSDZdErs0+F77sH2MKs2haMMkywzx7Q==
+    dependencies:
+      "@graphql-tools/utils" "^10.0.0"
+      tslib "^2.4.0"
+  
+  "@graphql-tools/schema@^10.0.0":
+    version "10.0.0"
+    resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-10.0.0.tgz#7b5f6b6a59f51c927de8c9069bde4ebbfefc64b3"
+    integrity sha512-kf3qOXMFcMs2f/S8Y3A8fm/2w+GaHAkfr3Gnhh2LOug/JgpY/ywgFVxO3jOeSpSEdoYcDKLcXVjMigNbY4AdQg==
+    dependencies:
+      "@graphql-tools/merge" "^9.0.0"
+      "@graphql-tools/utils" "^10.0.0"
+      tslib "^2.4.0"
+      value-or-promise "^1.0.12"
+  
   "@graphql-tools/schema@^9.0.0":
     version "9.0.19"
     resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-9.0.19.tgz#c4ad373b5e1b8a0cf365163435b7d236ebdd06e7"
@@ -292,6 +314,15 @@ Lockfile:
       "@graphql-tools/utils" "^9.2.1"
       tslib "^2.4.0"
       value-or-promise "^1.0.12"
+  
+  "@graphql-tools/utils@^10.0.0":
+    version "10.0.6"
+    resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-10.0.6.tgz#8a809d6bc0df27ffe8964696f182af2383b5974b"
+    integrity sha512-hZMjl/BbX10iagovakgf3IiqArx8TPsotq5pwBld37uIX1JiZoSbgbCIFol7u55bh32o6cfDEiiJgfAD5fbeyQ==
+    dependencies:
+      "@graphql-typed-document-node/core" "^3.1.1"
+      dset "^3.1.2"
+      tslib "^2.4.0"
   
   "@graphql-tools/utils@^9.2.1":
     version "9.2.1"
@@ -380,6 +411,18 @@ Lockfile:
       open "^9.1.0"
       picocolors "^1.0.0"
       tslib "^2.6.0"
+  
+  "@prisma/client@^5.2.0":
+    version "5.2.0"
+    resolved "https://registry.yarnpkg.com/@prisma/client/-/client-5.2.0.tgz#cbfdd440614b38736563a7999f39922fcde0ed50"
+    integrity sha512-AiTjJwR4J5Rh6Z/9ZKrBBLel3/5DzUNntMohOy7yObVnVoTNVFi2kvpLZlFuKO50d7yDspOtW6XBpiAd0BVXbQ==
+    dependencies:
+      "@prisma/engines-version" "5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f"
+  
+  "@prisma/engines-version@5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f":
+    version "5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f"
+    resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f.tgz#11366e7ff031c908debf4983248d40046016de37"
+    integrity sha512-jsnKT5JIDIE01lAeCj2ghY9IwxkedhKNvxQeoyLs6dr4ZXynetD0vTy7u6wMJt8vVPv8I5DPy/I4CFaoXAgbtg==
   
   "@prisma/engines@5.2.0":
     version "5.2.0"
@@ -471,6 +514,13 @@ Lockfile:
     version "3.4.36"
     resolved "https://registry.yarnpkg.com/@types/connect/-/connect-3.4.36.tgz#e511558c15a39cb29bd5357eebb57bd1459cd1ab"
     integrity sha512-P63Zd/JUGq+PdrM1lv0Wv5SBYeA2+CORvbrXbngriYY0jzLUWfQMQQxOhjONEz/wlHOAxOdY7CY65rgQdTjq2w==
+    dependencies:
+      "@types/node" "*"
+  
+  "@types/cors@^2.8.14":
+    version "2.8.14"
+    resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.14.tgz#94eeb1c95eda6a8ab54870a3bf88854512f43a92"
+    integrity sha512-RXHUvNWYICtbP6s18PnOCaqToK8y14DnLd75c6HfyKf228dxy7pHNOQkxPtvXKp/hINFMDjbYzsj63nnpPMSRQ==
     dependencies:
       "@types/node" "*"
   
@@ -880,7 +930,7 @@ Lockfile:
       type-is "~1.6.18"
       unpipe "1.0.0"
   
-  body-parser@^1.20.0:
+  body-parser@^1.20.0, body-parser@^1.20.2:
     version "1.20.2"
     resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.20.2.tgz#6feb0e21c4724d06de7ff38da36dad4f57a747fd"
     integrity sha512-ml9pReCu3M61kGlqoTm2umSXTlRTuGTx0bfYj+uIUKKYycG5NtSbeetV3faSU6R7ajOPw0g/J1PvK4qNy7s5bA==
@@ -1179,6 +1229,11 @@ Lockfile:
     version "16.3.1"
     resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.3.1.tgz#369034de7d7e5b120972693352a3bf112172cc3e"
     integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
+  
+  dset@^3.1.2:
+    version "3.1.2"
+    resolved "https://registry.yarnpkg.com/dset/-/dset-3.1.2.tgz#89c436ca6450398396dc6538ea00abc0c54cd45a"
+    integrity sha512-g/M9sqy3oHe477Ar4voQxWtaPIFw1jTdKZuomOjhCcBx9nHUNn0pu6NopuFFrTh/TRZIKEj+76vLWFu9BNKk+Q==
   
   dynamic-dedupe@^0.3.0:
     version "0.3.0"

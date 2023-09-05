@@ -1,6 +1,7 @@
 import { buildApolloServer } from "./apollo.server";
 import { expressMiddleware } from "@apollo/server/express4"
-import { Application, json } from "express";
+import { Application } from "express";
+import { json } from "body-parser";
 import http, { Server } from "http";
 import helmet from "helmet";
 import morgan from "morgan";
@@ -11,14 +12,14 @@ import logger from "../utils/logger";
 export default async ( { app }: { app: Application } ) : Promise<Server> => {
 
     const corsOptions = {
-        origin: "http://localhost:3000",
+        origin: ["https://studio.apollographql.com", "http://localhost:3000"],
+        credentials: true,
     }
 
-    app.use(morgan(`${configs.NODE_ENV === "dev" ? "dev" : "tiny"}`));
+    // app.use(morgan(`${configs.NODE_ENV === "dev" ? "dev" : "tiny"}`));
     app.use(helmet());
-    app.use(json({limit: "100kb"}));
-
-    app.use(cors(corsOptions));
+    app.use(cors());
+    app.use(json());
 
     app.get('/healthCheck', (req, res) => {
         try {

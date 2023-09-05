@@ -1,6 +1,7 @@
 import configs from "../configs/configs";
 import { PrismaClient } from "@prisma/client";
 import { selectBuilder } from "./prisma.utils";
+import logger from "./logger";
 
 const { prisma } = configs;
 

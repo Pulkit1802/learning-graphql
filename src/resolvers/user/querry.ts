@@ -1,7 +1,7 @@
 import { prismaFindMany, prismaFindUnique } from "../../utils/service.utils";
 
 
-export const userQueries = {
+export const queries = {
     user: async (_: any, args: any) => {
         const { id } = args;
 
@@ -15,3 +15,5 @@ export const userQueries = {
         return users;
     }
 };
+
+export default queries;

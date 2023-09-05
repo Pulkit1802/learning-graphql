@@ -1,8 +1,11 @@
 import { prismaCreate, prismaUpdate, prismaDelete } from "../../utils/service.utils";
 
-export const userMutations = {
+export const mutations = {
     createUser: async (_: any, args: any) => {
-        const { where, data } = args;
+
+        console.log("create user called");
+
+        const { data } = args;
 
         const user = await prismaCreate("user", data, ["id", "name", "email"]);
 
@@ -30,3 +33,5 @@ export const userMutations = {
         }
     }
 }
+
+export default mutations;

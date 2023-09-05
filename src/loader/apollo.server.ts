@@ -1,20 +1,16 @@
 import { ApolloServer } from "@apollo/server";
 import {ApolloServerPluginDrainHttpServer} from "@apollo/server/plugin/drainHttpServer";
+import { BaseContext } from "@apollo/server";
 import { Server } from "http";
 import configs from "../configs/configs";
-import typeDefs from "../graphql";
-import { BaseContext } from "@apollo/server";
 import logger from "../utils/logger";
+import typeDefs from "../graphql";
+import resolvers from "../resolvers";
+
 
 export const buildApolloServer = async (httpServer: Server, serverOptions?: BaseContext) => {
 
     try {
-
-        const resolvers = {
-            Query: {
-                users: () => "Hello World"
-            },
-        }
         
         const server = new ApolloServer({
             typeDefs,

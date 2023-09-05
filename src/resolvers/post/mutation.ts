@@ -1,21 +1,23 @@
+import logger from "../../utils/logger";
 import { prismaCreate, prismaUpdate, prismaDelete } from "../../utils/service.utils";
 
-export const postMutations = {
-    createpost: async (_: any, args: any) => {
+export const mutations = {
+    createPost: async (_: any, args: any) => {
+
         const { data } = args;
 
         const post = await prismaCreate("post", data);
 
         return post;
     },
-    updatepost: async (_: any, args: any) => {
+    updatePost: async (_: any, args: any) => {
         const { where, data } = args;
 
         const post = await prismaUpdate("post", where, data);
 
         return post;
     },
-    deletepost: async (_: any, args: any) => {
+    deletePost: async (_: any, args: any) => {
 
         const post = await prismaDelete("post", args);
 
@@ -30,3 +32,5 @@ export const postMutations = {
         }
     }
 }
+
+export default mutations;

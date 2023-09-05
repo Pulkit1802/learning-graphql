@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@apollo/sandbox": "^2.5.0",
     "@apollo/server": "^4.9.3",
     "@graphql-tools/schema": "^10.0.0",
     "@prisma/client": "^5.2.0",

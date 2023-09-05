@@ -15,7 +15,7 @@ const app: Application = express();
 
 let server: Server;
 loader({ app }).then((app) => {
-    server = app.listen(4000, () => {
+    server = app.listen(port, () => {
         logger.info(`Server is running on port ${port}`);
     }
 )});
