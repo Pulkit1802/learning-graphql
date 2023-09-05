@@ -9,3 +9,5 @@ const logger = winston.createLogger({
         }),
     ],
 });
+
+export default logger;
