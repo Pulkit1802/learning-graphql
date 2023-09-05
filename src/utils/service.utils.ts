@@ -1,24 +1,12 @@
 import configs from "../configs/configs";
 import { PrismaClient } from "@prisma/client";
+import { selectBuilder } from "./prisma.utils";
 
 const { prisma } = configs;
 
-type prismaSelectType = [string] | null;
+type prismaSelectType = [string | object] | null;
 type prismaOptionsType = object | null;
 
-const selectBuilder = (select: prismaSelectType) => {
-
-    if ( select === null ) 
-        return null;
-
-    let selectObj = {};
-    select.forEach((item: string) => {
-        // @ts-ignore
-        selectObj[item] = true;
-    });
-
-    return selectObj;
-};
 
 export const prismaCreate = async (
     model: keyof PrismaClient, 
