@@ -1,0 +1,7 @@
+input Where {
+    id: ID!
+    email: String!
+    authorId: ID!
+    postId: ID!
+    reviewId: ID!
+}

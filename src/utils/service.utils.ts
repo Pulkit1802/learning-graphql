@@ -4,7 +4,7 @@ import { selectBuilder } from "./prisma.utils";
 
 const { prisma } = configs;
 
-type prismaSelectType = [string | object] | null;
+type prismaSelectType = (string | object)[] | null;
 type prismaOptionsType = object | null;
 
 

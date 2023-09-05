@@ -1,4 +1,4 @@
-type prismaSelectType = [string | object] | null;
+type prismaSelectType = (string | object)[] | null;
 
 export const selectBuilder = (select: prismaSelectType) => {
 

@@ -1,6 +1,5 @@
 type DeletedItem {
     status: String!
-    deleted: Boolean!
 }
 
 type Query {
@@ -16,12 +15,12 @@ type Query {
 
 type Mutation {
 
-    createUser(user: CreateUserInput): User!
-    updateUser(user: UpdateUserInput): User!
+    createUser(data: CreateUserInput): User!
+    updateUser(where: Where!, data: UpdateUserInput): User!
     deleteUser(id: ID!): DeletedItem!
 
-    createPost(post: CreatePostInput): Post!
-    updatePost(post: UpdatePostInput): Post!
+    createPost(data: CreatePostInput): Post!
+    updatePost(where: Where!, data: UpdatePostInput): Post!
     deletePost(id: ID!): DeletedItem!
 
     createReview(review: CreateReviewInput): Review!
