@@ -17,13 +17,20 @@ export const prismaCreate = async (
     ) => {
 
         const select = selectBuilder(selectArr);
+        logger.info(select);
 
-        // @ts-ignore
-        const res = await prisma[model].create({
-            data,
-            select,
-            ...options
-        });
+        let res;
+        try {
+            // @ts-ignore
+            res = await prisma[model].create({
+                data,
+                select,
+                ...options
+            });
+        } catch (error) {
+            logger.error(error);
+        }
+        
 
         return res;
 
@@ -57,6 +64,8 @@ export const prismaFindMany = async (
     ) => {
 
         const select = selectBuilder(selectArr);
+
+        logger.info(select);
 
         // @ts-ignore
         const res = await prisma[model].findMany({

@@ -12,7 +12,7 @@ input CreateReviewInput {
     title: String!
     content: String!
     postId: ID!
-    userId: ID!    
+    authorId: ID!    
 }
 
 input UpdateReviewInput {

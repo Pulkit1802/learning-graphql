@@ -1,3 +1,5 @@
+import logger from "./logger";
+
 type prismaSelectType = (string | object)[] | null;
 
 export const selectBuilder = (select: prismaSelectType) => {
@@ -15,7 +17,9 @@ export const selectBuilder = (select: prismaSelectType) => {
         } else {
             for (const [key, value] of Object.entries(field)) {
                 // @ts-ignore
-                selectObj[key]['select'] = selectBuilder(value);
+                selectObj[key] = {
+                    'select': selectBuilder(value)
+                }
             }
         }
     });

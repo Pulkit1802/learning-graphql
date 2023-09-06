@@ -14,5 +14,3 @@ export const queries = {
         return posts;
     }
 };
-
-export default queries;
