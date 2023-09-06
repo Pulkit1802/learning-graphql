@@ -17,19 +17,13 @@ export const prismaCreate = async (
     ) => {
 
         const select = selectBuilder(selectArr);
-        logger.info(select);
 
-        let res;
-        try {
-            // @ts-ignore
-            res = await prisma[model].create({
-                data,
-                select,
-                ...options
-            });
-        } catch (error) {
-            logger.error(error);
-        }
+        // @ts-ignore
+        const res = await prisma[model].create({
+            data,
+            select,
+            ...options
+        });
         
 
         return res;
